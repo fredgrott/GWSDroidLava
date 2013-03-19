@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Mar 17, 2013 7:00:35 AM                                                        
+
+     GWSDroidlava    
+     doclet for pretty embedded javadoc sin websties
+                   
+     fredgrott                                                                
+     ====================================================================== -->
+<project name="GWSDroidlava" default="default">
+    <description>
+            doclet for pretty embedded javadoc sin websties
+    </description>
+	
+	<property file="local.properties"/>
+	<path id="lib.classpath">
+		<fileset dir="lib">
+			<include name="antlr-runtime-3.5.jar"/>
+			<include name="guava-14.0.1.jar"/>
+			<include name="jsilver-1.0.0.jar"/>
+		</fileset>
+		<pathelement location="${toolsjar}"/>
+	</path>
+	
+
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default" depends="depends" description="doclet for pretty embedded javadoc sin websties">
+        
+    </target>
+
+    <!-- - - - - - - - - - - - - - - - - - 
+          target: depends                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="depends">
+    	<javac srcdir="${basedir}/src"
+    	                     destdir="${basedir}/bin"
+    	                     fork="true"
+    	                classpathref="lib.claspath"
+    	                
+    	                     source="1.6"
+    	                     target="1.6"
+    	              />
+    	            
+    	            <jar destfile="dist/gwsdroidlava-1.0.jar" basedir="bin"></jar>
+    </target>
+
+</project>
