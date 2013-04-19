@@ -24,7 +24,8 @@ public class Errors {
   private static boolean warningsAreErrors = false;
   private static TreeSet<ErrorMessage> allErrors = new TreeSet<ErrorMessage>();
 
-  public static class ErrorMessage implements Comparable {
+  @SuppressWarnings("rawtypes")
+public static class ErrorMessage implements Comparable {
     Error error;
     SourcePositionInfo pos;
     String msg;

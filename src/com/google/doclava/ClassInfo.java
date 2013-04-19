@@ -32,6 +32,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.Vector;
 
+@SuppressWarnings("rawtypes")
 public class ClassInfo extends DocInfo implements ContainerInfo, Comparable, Scoped, Resolvable {
   public static final Comparator<ClassInfo> comparator = new Comparator<ClassInfo>() {
     public int compare(ClassInfo a, ClassInfo b) {

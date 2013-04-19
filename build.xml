@@ -9,7 +9,7 @@
      ====================================================================== -->
 <project name="GWSDroidlava" default="default">
     <description>
-            doclet for pretty embedded javadoc sin websties
+            doclet for pretty embedded javadocs in websites
     </description>
 	
 	<property file="local.properties"/>
@@ -21,7 +21,7 @@
 		</fileset>
 		<pathelement location="${toolsjar}"/>
 	</path>
-	
+   <property name="jsilver" value="lib/jsilver-1.0.0.jar"/>
 
     <!-- ================================= 
           target: default              
@@ -41,9 +41,18 @@
     	                
     	                     source="1.6"
     	                     target="1.6"
-    	              />
-    	            
-    	            <jar destfile="dist/gwsdroidlava-1.0.jar" basedir="bin"></jar>
+    	              >
+    		<classpath>
+    		                                <pathelement location="${jsilver}"/>
+    		                        </classpath>
+    		                </javac>
+    	<copy todir="bin/classes/assets">
+    	                        <fileset dir="res/assets"/>
+    	                </copy>
+    	            <jar destfile="dist/gwsdroidlava-1.0.jar" basedir="bin">
+    	            	   <fileset dir="bin/classes"/>
+    	            	                      <zipfileset src="${jsilver}" />
+    	            </jar>
     </target>
 
 </project>
